@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Django Boys blog</title>
+        <title>Dragon Sensei's blog</title>
         
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -14,9 +14,13 @@
         <div>
             <h1 class="page-header">
                 {% if user.is_authenticated %}
+                    <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+                {% else %}
+                    <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
-                <a href="/">Django Boys Blog</a>
+                <a href="/">Dragon Sensei's blog</a>
             </h1>
         </div>
 

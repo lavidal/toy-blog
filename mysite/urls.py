@@ -14,8 +14,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views
+from . import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('blog.urls')),
+    url(r'^accounts/login/', views.login, name='login'),
+    # url(r'^accounts/login/$', auth_views.login, {'template_name': 'myapp/login.html'}),
+    url(r'^accounts/logout/', views.logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 ]
